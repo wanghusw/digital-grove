@@ -1,5 +1,4 @@
 on: [push]
-
 permissions:
   contents: write
 jobs:
@@ -8,8 +7,12 @@ jobs:
     name: Publish Logseq graph
     steps:
       - uses: actions/checkout@v4
-      - uses: logseq/publish-spa@v0.3.0
-      - name: Add a nojekyll file # to make sure asset paths are correctly identified
+      - uses: logseq/publish-spa@v0.3.1
+        with:
+          graph-directory: "."
+          output-directory: www
+          site-base-path: /你的仓库名 # 这里填写你的仓库名字，前面斜杠不能省略
+      - name: Add a nojekyll file
         run: touch $GITHUB_WORKSPACE/www/.nojekyll
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
