@@ -423,5 +423,6 @@
  :feature/enable-flashcards? false
  :ui/show-brackets? false
  :feature/enable-whiteboards? false
- :feature/enable-journals? true
- :publishing/all-pages-public? false}
+ :feature/enable-journals? false
+ :publishing/all-pages-public? false
+ :default-home {:page "日历数据库"}}
