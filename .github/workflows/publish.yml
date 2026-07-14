@@ -11,7 +11,7 @@ jobs:
         with:
           graph-directory: "."
           output-directory: www
-          site-base-path: /你的仓库名 # 这里填写你的仓库名字，前面斜杠不能省略
+          site-base-path: /digital-grove # 这里填写你的仓库名字，前面斜杠不能省略
       - name: Add a nojekyll file
         run: touch $GITHUB_WORKSPACE/www/.nojekyll
       - name: Deploy 🚀
