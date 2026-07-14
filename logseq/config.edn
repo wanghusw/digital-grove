@@ -424,5 +424,5 @@
  :ui/show-brackets? false
  :feature/enable-whiteboards? false
  :feature/enable-journals? false
- :publishing/all-pages-public? false
+ :publishing/all-pages-public? true
  :default-home {:page "日历数据库"}}
