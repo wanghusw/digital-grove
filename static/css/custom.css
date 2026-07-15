@@ -13,7 +13,7 @@
       left: -13px;
 }
 
-/* 3. 原神字体定义 */
+/* 3. 原神字体定义，我也不知道这是干嘛的，先留着吧 */
 @font-face {
   font-family: "Genshin";
   font-style: normal;
@@ -26,12 +26,12 @@
   font-family: Genshin;
 }
 
-/* 4. 代码块设定：Ubuntu Mono + 思源等宽 (深度覆盖优化版) */
+/* 4. 代码块设定：Ubuntu Mono + Maple‑Mono‑CN 中文等宽字体 */
 
 /* 
    优化点：
    1. 增加通配符选择器 (*) 确保覆盖到代码高亮产生的每一个 span 标签。
-   2. 修正 line-height 为 1.5，防止思源等宽汉字底部被截断。
+   2. 修正 line-height 为 1.5，防止汉字底部被截断，我不管这些，根据自己感觉进行调整。
    3. 整合了编辑状态下的 textarea 强制显示，防止光标位置错位。
 */
 .CodeMirror, 
@@ -40,10 +40,10 @@
 .CodeMirror-line *, 
 .CodeMirror-scroll *,
 .CodeMirror textarea {
-  /* 优先级：Ubuntu Mono(英文) -> 思源等宽(中文) -> 备用等宽 */
-  font-family: "Ubuntu Mono", "Maple Mono CN", monospace !important;
+  /* 优先级：Ubuntu Mono(英文) -> 微软雅黑等宽(中文本地) -> Maple‑Mono‑CN 中文等宽字体 -> 备用等宽 */
+  font-family: "Ubuntu Mono", "Microsoft YaHei Mono", "Maple Mono CN", monospace !important;
   font-size: 13px !important;
-  /* 汉字等宽字体通常字身较高，1.5 是确保不截断且对齐行号的黄金比例 */
+  /* 汉字等宽字体通常字身较高，1.5 是确保不截断且对齐行号的黄金比例，我不管这些，目前的设置是我认为舒服的 */
   line-height: 1.3 !important;
 }
 
