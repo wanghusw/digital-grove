@@ -43,8 +43,7 @@
   /* 优先级：Ubuntu Mono(英文) -> 微软雅黑等宽(中文本地) -> Maple‑Mono‑CN 中文等宽字体 -> 备用等宽 */
   font-family: "Ubuntu Mono", "Microsoft YaHei Mono", "Maple Mono CN", monospace !important;
   font-size: 13px !important;
-  /* 汉字等宽字体通常字身较高，1.5 是确保不截断且对齐行号的黄金比例，我不管这些，目前的设置是我认为舒服的 */
-  line-height: 1.3 !important;
+  line-height: 1.5 !important;
 }
 
 /* 确保行号区域与文字对齐，并保持略小的比例 */
@@ -54,7 +53,7 @@
   font-family: "Ubuntu Mono", monospace !important;
   font-size: 11px !important; 
   /* 强制行号行高与文字一致，防止错位 */
-  line-height: 1.4 !important;
+  line-height: 19.5px !important;
 }
 
 /* 消除 pengx17 主题可能存在的边框干扰 */
