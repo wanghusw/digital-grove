@@ -1,0 +1,21 @@
+/* 1. 引入主题 */
+@import url("https://cdn.jsdelivr.net/gh/pengx17/logseq-dev-theme@latest/custom.css");
+
+/* 2. 大纲缩进线微调 */
+.ls-block[haschild] > div > .block-content-wrapper::before {
+      left: -13px;
+}
+
+/* 3. 原神字体定义 */
+@font-face {
+  font-family: "Genshin";
+  font-style: normal;
+  font-weight: normal;
+  src: url(https://static.wikia.nocookie.net/gensin-impact/images/6/65/Genshin_Impact_Font.woff)
+    format("truetype");
+}
+
+.genshin {
+  font-family: Genshin;
+}
+
