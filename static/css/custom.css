@@ -4,8 +4,9 @@
 /* 引入 Ubuntu Mono (英文代码等宽) */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
 
-/* 引入 思源等宽 (中文代码等宽的最佳替代) */
-@import url("https://cdn.jsdelivr.net/npm/source-han-mono@1.0.1/source-han-mono.css");
+/* 引入 Maple‑Mono‑CN 中文等宽字体，cdn.jsdelivr.net 内置css，一行导入 */
+@import url("https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Regular/result.min.css");
+@import url("https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Bold/result.min.css");
 
 /* 2. 大纲缩进线微调 */
 .ls-block[haschild] > div > .block-content-wrapper::before {
@@ -25,21 +26,42 @@
   font-family: Genshin;
 }
 
-/* 4. 代码块设定：保持英文默认，汉字改为微软雅黑Mono */
+/* 4. 代码块设定：Ubuntu Mono + 思源等宽 (深度覆盖优化版) */
+
+/* 
+   优化点：
+   1. 增加通配符选择器 (*) 确保覆盖到代码高亮产生的每一个 span 标签。
+   2. 修正 line-height 为 1.5，防止思源等宽汉字底部被截断。
+   3. 整合了编辑状态下的 textarea 强制显示，防止光标位置错位。
+*/
 .CodeMirror, 
 .CodeMirror pre.CodeMirror-line, 
-.CodeMirror-code {
-  /* 顺序：~~Fira Code(英文) -> Microsoft YaHei Mono(汉字) -> 这里的 Fira Code 也可以换成主题默认的 var(--ct-code-font-family)~~，这里我用了 "Ubuntu Mono derivative Powerline", "Microsoft YaHei Mono"。 */
-  font-family: "Ubuntu Mono", "Source Han Mono", "Source Han Mono SC", monospace !important;
+.CodeMirror-code,
+.CodeMirror-line *, 
+.CodeMirror-scroll *,
+.CodeMirror textarea {
+  /* 优先级：Ubuntu Mono(英文) -> 思源等宽(中文) -> 备用等宽 */
+  font-family: "Ubuntu Mono", "Maple Mono CN", monospace !important;
   font-size: 13px !important;
-  line-height: 1.3;
+  /* 汉字等宽字体通常字身较高，1.5 是确保不截断且对齐行号的黄金比例 */
+  line-height: 1.3 !important;
 }
 
-/* 确保行号等辅助区域同步字号 */
+/* 确保行号区域与文字对齐，并保持略小的比例 */
 .CodeMirror-gutter,
 .CodeMirror-gutters,
 .CodeMirror-linenumber {
-  font-size: 12px !important; /* 行号通常建议略小 */
+  font-family: "Ubuntu Mono", monospace !important;
+  font-size: 11px !important; 
+  /* 强制行号行高与文字一致，防止错位 */
+  line-height: 1.4 !important;
 }
+
+/* 消除 pengx17 主题可能存在的边框干扰 */
+.CodeMirror {
+  background-color: var(--color-level-1);
+  box-shadow: 0 0 0 2px var(--color-level-2);
+}
+
 
 
