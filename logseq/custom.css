@@ -1,5 +1,18 @@
+/* 1. 引入主题及网络字体 */
 @import url("https://cdn.jsdelivr.net/gh/pengx17/logseq-dev-theme@latest/custom.css");
 
+/* 引入 Ubuntu Mono (英文代码等宽) */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
+
+/* 引入 思源等宽 (中文代码等宽的最佳替代) */
+@import url("https://cdn.jsdelivr.net/npm/source-han-mono@1.0.1/source-han-mono.css");
+
+/* 2. 大纲缩进线微调 */
+.ls-block[haschild] > div > .block-content-wrapper::before {
+      left: -13px;
+}
+
+/* 3. 原神字体定义 */
 @font-face {
   font-family: "Genshin";
   font-style: normal;
@@ -11,3 +24,22 @@
 .genshin {
   font-family: Genshin;
 }
+
+/* 4. 代码块设定：保持英文默认，汉字改为微软雅黑Mono */
+.CodeMirror, 
+.CodeMirror pre.CodeMirror-line, 
+.CodeMirror-code {
+  /* 顺序：~~Fira Code(英文) -> Microsoft YaHei Mono(汉字) -> 这里的 Fira Code 也可以换成主题默认的 var(--ct-code-font-family)~~，这里我用了 "Ubuntu Mono derivative Powerline", "Microsoft YaHei Mono"。 */
+  font-family: "Ubuntu Mono", "Source Han Mono", "Source Han Mono SC", monospace !important;
+  font-size: 13px !important;
+  line-height: 1.3;
+}
+
+/* 确保行号等辅助区域同步字号 */
+.CodeMirror-gutter,
+.CodeMirror-gutters,
+.CodeMirror-linenumber {
+  font-size: 12px !important; /* 行号通常建议略小 */
+}
+
+
