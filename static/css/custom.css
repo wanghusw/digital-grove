@@ -62,5 +62,29 @@
   box-shadow: 0 0 0 2px var(--color-level-2);
 }
 
+/* 5. 让嵌入块折叠，要配合 `custom.js` 使用，以下两段代码来源为： https://discuss.logseq.com/t/foldable-embedded-pages/25105，其中有相关链接 2026-07-28 12:19:47 */
+.embed-page .mr-3 {
+  cursor: pointer;
+}
+.embed-page .blocks-container {
+  display: none;
+}
+.embed-page.unfolded .blocks-container {
+  display: block;
+}
 
+/* 让嵌入块可以折叠展开，这个方法不是箭头旋转，而是右箭头变下箭头 */
+.embed-page .mr-3 {
+  display: inline-flex;
+  align-items: center;      /* 垂直居中 */
+  cursor: pointer;
+}
+.embed-page .mr-3::after {
+  content: "▶️ ";            /* 折叠时显示向右三角 */
+  margin-left: 6px;
+  font-size: 0.7em;
+}
+.embed-page.unfolded .mr-3::after {
+  content: "🔽 ";            /* 展开时显示向下三角 */
+}
 
