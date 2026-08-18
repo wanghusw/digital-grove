@@ -1,5 +1,5 @@
 /* 1. 引入主题及网络字体 */
-@import url("https://cdn.jsdelivr.net/gh/pengx17/logseq-dev-theme@main/custom.css");
+@import url("https://cdn.jsdelivr.net/gh/pengx17/logseq-dev-theme@latest/custom.css");
 
 /* 引入 Ubuntu Mono (英文代码等宽) */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
@@ -87,4 +87,43 @@
 .embed-page.unfolded .mr-3::after {
   content: "🔽 ";            /* 展开时显示向下三角 */
 }
+
+/* ============================================================
+   稳妥修复：强制标签样式与期望图对齐 (1px 细边框 + 蓝色)
+   ============================================================ */
+
+/* 使用 div#app-container 提升权重，确保覆盖 pengx17 主题的 2px 默认值 */
+div#app-container a.tag {
+  /* 1. 颜色锁定：强制使用您选中的深蓝色 */
+  color: #106ba3 !important;
+  
+  /* 2. 边框修正：强制改为 1px 实线。
+     现状图看起来模糊是因为主题默认的 2px 在某些缩放倍数下会产生抗锯齿阴影。 */
+  border: 1px solid #106ba3 !important;
+  
+  /* 3. 背景补偿：增加 5% 透明度的蓝色背景，这能让标签在视觉上更清晰，符合期望图表现 */
+  background-color: rgba(16, 107, 163, 0.05) !important;
+  
+  /* 4. 几何属性对齐 */
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  font-size: 0.85em !important;
+  line-height: 1.4 !important;
+  
+  /* 5. 渲染优化：防止文字下划线干扰，强制块状显示 */
+  text-decoration: none !important;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 悬停状态：反色显示 */
+div#app-container a.tag:hover {
+  background-color: #106ba3 !important;
+  color: #ffffff !important;
+  border-color: #106ba3 !important;
+}
+
 
