@@ -1,19 +1,5 @@
-/* 1. 引入主题及网络字体 */
 @import url("https://cdn.jsdelivr.net/gh/pengx17/logseq-dev-theme@latest/custom.css");
 
-/* 引入 Ubuntu Mono (英文代码等宽) */
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap");
-
-/* 引入 Maple‑Mono‑CN 中文等宽字体，cdn.jsdelivr.net 内置css，一行导入 */
-@import url("https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Regular/result.min.css");
-@import url("https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Bold/result.min.css");
-
-/* 2. 大纲缩进线微调 */
-.ls-block[haschild] > div > .block-content-wrapper::before {
-      left: -13px;
-}
-
-/* 3. 原神字体定义，我也不知道这是干嘛的，先留着吧 */
 @font-face {
   font-family: "Genshin";
   font-style: normal;
@@ -25,66 +11,3 @@
 .genshin {
   font-family: Genshin;
 }
-
-/* 4. 代码块设定：Ubuntu Mono + Maple‑Mono‑CN 中文等宽字体 */
-
-/* 
-   优化点：
-   1. 增加通配符选择器 (*) 确保覆盖到代码高亮产生的每一个 span 标签。
-   2. 修正 line-height 为 1.5，防止汉字底部被截断，我不管这些，根据自己感觉进行调整。
-   3. 整合了编辑状态下的 textarea 强制显示，防止光标位置错位。
-*/
-.CodeMirror, 
-.CodeMirror pre.CodeMirror-line, 
-.CodeMirror-code,
-.CodeMirror-line *, 
-.CodeMirror-scroll *,
-.CodeMirror textarea {
-  /* 优先级：Ubuntu Mono(英文) -> 微软雅黑等宽(中文本地) -> Maple‑Mono‑CN 中文等宽字体 -> 备用等宽 */
-  font-family: "Ubuntu Mono", "Microsoft YaHei Mono", "Maple Mono CN", monospace !important;
-  font-size: 13px !important;
-  line-height: 1.5 !important;
-}
-
-/* 确保行号区域与文字对齐，并保持略小的比例 */
-.CodeMirror-gutter,
-.CodeMirror-gutters,
-.CodeMirror-linenumber {
-  font-family: "Ubuntu Mono", monospace !important;
-  font-size: 11px !important; 
-  /* 强制行号行高与文字一致，防止错位 */
-  line-height: 19.5px !important;
-}
-
-/* 消除 pengx17 主题可能存在的边框干扰 */
-.CodeMirror {
-  background-color: var(--color-level-1);
-  box-shadow: 0 0 0 2px var(--color-level-2);
-}
-
-/* 5. 让嵌入块折叠，要配合 `custom.js` 使用，以下两段代码来源为： https://discuss.logseq.com/t/foldable-embedded-pages/25105，其中有相关链接 2026-07-28 12:19:47 */
-.embed-page .mr-3 {
-  cursor: pointer;
-}
-.embed-page .blocks-container {
-  display: none;
-}
-.embed-page.unfolded .blocks-container {
-  display: block;
-}
-
-/* 让嵌入块可以折叠展开，这个方法不是箭头旋转，而是右箭头变下箭头 */
-.embed-page .mr-3 {
-  display: inline-flex;
-  align-items: center;      /* 垂直居中 */
-  cursor: pointer;
-}
-.embed-page .mr-3::after {
-  content: "▶️ ";            /* 折叠时显示向右三角 */
-  margin-left: 6px;
-  font-size: 0.7em;
-}
-.embed-page.unfolded .mr-3::after {
-  content: "🔽 ";            /* 展开时显示向下三角 */
-}
-
